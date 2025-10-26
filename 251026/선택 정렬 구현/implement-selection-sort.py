@@ -2,11 +2,12 @@ n = int(input())
 arr = list(map(int, input().split()))
 
 # Please write your code here.
-min = arr[0]
-for i in range(0,len(arr)-1):
-    if arr[i] < min:
-        tmp = arr[i]
-        arr[i] = min
-        min = tmp
+for i in range(0,n-1):
+    min = i
+    for j in range(i,n-1):
+        if arr[j] < arr[min]:
+            tmp = arr[j]
+            arr[j] = arr[min]
+            arr[min] = tmp
 
 print(*arr)
