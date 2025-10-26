@@ -1,35 +1,30 @@
 n = int(input())
 arr = list(map(int, input().split()))
-merged_arr = [0] * n 
-
+ 
 def merge(low,mid,high):
-    front = low
-    back = mid+1
-    pos = low
+    merged_arr = []
+    left = low
+    right = mid+1
     
-    while front <= mid and back <= high:
-        if arr[front] <= arr[back]:
-            merged_arr[pos] = arr[front]
-            front += 1
-            pos += 1
+    while left <= mid and right <= high:
+        if arr[left] <= arr[right]:
+            merged_arr.append(arr[left])
+            left += 1
     
         else:
-            merged_arr[pos] = arr[back]
-            back += 1
-            pos += 1
+            merged_arr.append(arr[right])
+            right += 1
     
-    while front <= mid:
-        merged_arr[pos] = arr[front]
-        front += 1
-        pos += 1
+    while left <= mid:
+        merged_arr.append(arr[left])
+        left += 1
     
-    while back <= high:
-        merged_arr[pos] = arr[back]
-        back += 1
-        pos += 1
+    while right <= high:
+        merged_arr.append(arr[right])
+        right += 1
     
-    for i in range(low,high+1):
-        arr[i] = merged_arr[i]
+    for i in range(len(merged_arr)):
+        arr[low + i] = merged_arr[i]
 
 def merge_sort(low,high):
     if low < high:
